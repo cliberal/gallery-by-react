@@ -28,7 +28,6 @@ class ImgFigure extends React.Component {
     }
 
     handleClick(e) {
-        this.props.inverse();
         if (this.props.arrange.isCenter) {
             this.props.inverse();
         } else {
@@ -57,7 +56,7 @@ class ImgFigure extends React.Component {
         }
 
         let imgFigureClassName = 'img-figure';
-        imgFigureClassName += this.props.arrange.isInverse ? ' is-inverse ' : ' ';
+        imgFigureClassName += this.props.arrange.isInverse ? ' is-inverse ' : ''
 
         return (
             <figure className={imgFigureClassName} style={styleObj} onClick={this.handleClick}>
@@ -230,7 +229,7 @@ class AppComponent extends React.Component {
 
     render() {
         let controllerUnits = [], imgFigures = [];
-        imageData.forEach(function(value, index) {
+        imageData.forEach((value, index) => {
             if (!this.state.imgArrangeArr[index]) {
                 this.state.imgArrangeArr[index] = {
                     pos: {
@@ -245,7 +244,7 @@ class AppComponent extends React.Component {
             imgFigures.push(<ImgFigure key={index} data={value} ref={'imgFigure' + index}
                                        arrange={this.state.imgArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
             controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
-        }.bind(this));
+        });
 
 
         return (
